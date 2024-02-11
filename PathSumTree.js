@@ -11,7 +11,6 @@ class TreeNode{
     }
 }
 
-
 function Pathsum(root, targetvalue) {
 
     function findpathsum(node, current){
