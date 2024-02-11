@@ -1,33 +1,20 @@
-
-// fondings the substring values 
-
-function isSubsequence(string1, string2) {
-    if (string1.length > string2.length) {
-        return false;
+function longestPrefix(data) {
+    if (data === null) {
+        return "";
     }
 
-    var flag = true;
+    data = data.sort();
+    const firstWord = data[0];
+    const lastWord = data[data.length - 1];
 
-    for (var i = 0; i < string1.length; i++) {
-        flag = false;
-        for (var j = 0; j < string2.length; j++) {
-            if (string1[i] === string2[j]) {
-                flag = true;
-                break;
-            }
-        }
-
-        if (flag === false) {
-            break;
-        }
+    let i = 0;
+    while (i < firstWord.length && firstWord[i] === lastWord[i]) {
+        i++;
     }
 
-    return flag;
+    return firstWord.substring(0, i);
 }
 
-const result = isSubsequence('abc', 'abefdf');
-if (result) {
-    console.log("This is a subsequence");
-} else {
-    console.log("Not a subsequence");
-}
+const data = ["aniket", "anirudh", "angha"];
+const result = longestPrefix(data);
+console.log(result);
