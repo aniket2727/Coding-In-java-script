@@ -8,7 +8,6 @@ function Twosum(data, target) {
             result[i]=1
         }
     }
-
     for (let i = 0; i < data.length; i++) {
         const diff = Math.abs(data[i] - target)
         if (result[diff]) {
@@ -17,7 +16,6 @@ function Twosum(data, target) {
     }
     return false;
 }
-
 var result = Twosum([1, 2, 5, 6, 4, 7], 999);
 console.log("result of 2 sums",result)
 
