@@ -1,7 +1,4 @@
 
-
-
-
 // first letter apppers twice
 
 function firstletterappeartwice(data){
