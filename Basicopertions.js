@@ -105,35 +105,72 @@
 
 
 
-function outer() {
-    const arrow = async () => {
-        console.log("Arrow function");
+// function outer() {
+//     const arrow = async () => {
+//         console.log("Arrow function");
         
-        // Using Promise and await for the setTimeout
-        await new Promise(resolve => setTimeout(() => {
-            console.log("Timeout completed in arrow function");
-            resolve(); // Resolve the promise when the timeout is completed
-        }, 2000));
+//         // Using Promise and await for the setTimeout
+//         await new Promise(resolve => setTimeout(() => {
+//             console.log("Timeout completed in arrow function");
+//             resolve(); // Resolve the promise when the timeout is completed
+//         }, 2000));
 
-        console.log("Arrow function is completed");
-    };
+//         console.log("Arrow function is completed");
+//     };
 
-    function normal() {
-        console.log("Normal function");
+//     function normal() {
+//         console.log("Normal function");
 
-        // Using regular setTimeout, no need for async/await
-        setTimeout(() => {
-            console.log("Timeout completed in normal function");
-        }, 2000);
+//         // Using regular setTimeout, no need for async/await
+//         setTimeout(() => {
+//             console.log("Timeout completed in normal function");
+//         }, 2000);
 
-        console.log("Normal function is completed");
-    }
+//         console.log("Normal function is completed");
+//     }
 
-    return { arrow, normal };
+//     return { arrow, normal };
+// }
+
+// const functions = outer();
+
+// // Calling the arrow and normal functions
+// functions.arrow();
+// functions.normal();
+
+
+
+
+function fetchData1() {
+    return new Promise(resolve => setTimeout(() => resolve("Data from API 1"), 1000));
 }
 
-const functions = outer();
+function fetchData2() {
+    return new Promise(resolve => setTimeout(() => resolve("Data from API 2"), 1500));
+}
 
-// Calling the arrow and normal functions
-functions.arrow();
-functions.normal();
+function fetchData3() {
+    return new Promise((resolve, reject) => setTimeout(() => resolve("Error fetching data"), 2000));
+}
+
+
+
+function exampleusingapi(){
+    const first=fetchData1();
+    const second=fetchData2();
+    const third=fetchData3();
+
+
+
+    Promise.all([first,second,third])
+    .then(data=>{
+        console.log("the outpus is",data)
+    })
+    .catch((error)=>{
+        console.error("At least one promise rejected:", error);
+    })
+}
+
+
+
+exampleusingapi();
